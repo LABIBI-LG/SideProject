@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="height: 100vh;">
+    <div class="col-12 col-lg-7">
+      <mat-card class="my-3">
+        <mat-card-title></mat-card-title>
+        <mat-card-subtitle>
+          <!-- 內容 -->
+          <div class="text-end mb-3">
+            <mat-radio-group [(ngModel)]="reasonRadio" (ngModelChange)="reason=''">
+              <mat-radio-button class="example-margin me-3" value="0">預設事項</mat-radio-button>
+              <mat-radio-button class="example-margin" value="1">額外輸入</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>請假對象</mat-label>
+                <mat-select [(ngModel)]="userName" name="food">
+                  <mat-option *ngFor="let item of members" [value]="item.value">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+              <ng-template [ngIf]="reasonRadio == '0'" [ngIfElse]="templatElse">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>選擇事由</mat-label>
+                  <mat-select [(ngModel)]="reason" name="food">
+                    <mat-option *ngFor="let item of reasons" [value]="item.value">
+                      {{item.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </ng-template>
+              <ng-template #templatElse>
+                <mat-form-field class="example-form-field" appearance="fill" class="w-100">
+                  <mat-label>輸入事由</mat-label>
+                  <input matInput type="text" [(ngModel)]="reason">
+                </mat-form-field>
+              </ng-template>
+            </div>
+
+            <div class="row mb-1">
+              <div class="col-lg-7">
+                <mat-radio-group [(ngModel)]="action" (ngModelChange)="actionChange()">
+                  <div class="row">
+                    <div class="col-6 col-lg-3 mb-2">
+                      <mat-radio-button class="example-margin" value="0">輸入時間</mat-radio-button>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-2">
+                      <mat-radio-button class="example-margin" value="1">請整天</mat-radio-button>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-2">
+                      <mat-radio-button class="example-margin" value="2">請早上</mat-radio-button>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-2">
+                      <mat-radio-button class="example-margin" value="3">請下午</mat-radio-button>
+                    </div>
+                  </div>
+                </mat-radio-group>
+              </div>
+            </div>
+            <div class="col-lg-9">
+
+
+              <div class="row">
+                <div class="col-4">
+                  <mat-form-field color="accent" appearance="fill" class="w-100">
+                    <mat-label>請假日期</mat-label>
+                    <input matInput [matDatepicker]="picker1" [(ngModel)]="date">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-4">
+                  <div>
+                    <mat-form-field class="example-form-field" appearance="fill" class="w-100">
+                      <mat-label>開始時間</mat-label>
+                      <input matInput aria-label="24hr format" [ngxTimepicker]="fullTime1" min="09:00" max="17:30"
+                        [format]="24" readonly [(ngModel)]="startTime">
+                      <ngx-material-timepicker #fullTime1 [theme]="darkTheme"></ngx-material-timepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div>
+                    <mat-form-field class="example-form-field" appearance="fill" class="w-100">
+                      <mat-label>結束時間</mat-label>
+                      <input matInput aria-label="24hr format" [ngxTimepicker]="fullTime2" min="09:00" max="17:30"
+                        [format]="24" readonly [(ngModel)]="endTime">
+                      <ngx-material-timepicker #fullTime2 [theme]="darkTheme"></ngx-material-timepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6"></div>
+          </div>
+          <hr>
+          <div class="row justify-content-end">
+            <div class="col-lg-6">
+              <div class="text-end mb-3">
+                <button mat-raised-button color="accent" class="w-100" (click)="create()">Create</button>
+              </div>
+            </div>
+          </div>
+          <!-- 主旨 -->
+          <div>
+            <mat-form-field class="example-full-width" appearance="fill" class="w-100">
+              <mat-label>主旨</mat-label>
+              <input matInput [(ngModel)]="'請假通知：'+ userName" id="userName">
+            </mat-form-field>
+            <div class="text-end">
+              <button mat-raised-button color="primary" (click)="copy('#userName')">Copy</button>
+            </div>
+          </div>
+          <!-- 內容 -->
+          <div class="mt-3">
+            <mat-form-field class="example-full-width" appearance="fill" class="w-100">
+              <mat-label>內文</mat-label>
+              <textarea matInput rows="7" cols="50" [(ngModel)]="content" id="content"></textarea>
+            </mat-form-field>
+            <div class="text-end">
+              <button mat-raised-button color="primary" (click)="copy('#content')">Copy</button>
+            </div>
+          </div>
+        </mat-card-subtitle>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
