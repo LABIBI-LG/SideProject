@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
@@ -48,7 +49,8 @@ export const TW_FORMATS = {
     MatDatepickerModule,
     MatMomentDateModule,
     MatFormFieldModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    MatIconModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'zh-TW' },

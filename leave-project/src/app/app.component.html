@@ -13,6 +13,7 @@
           </div>
           <div class="row">
             <div class="col-lg-6">
+              <!-- 請假對象 -->
               <mat-form-field appearance="fill" class="w-100">
                 <mat-label>請假對象</mat-label>
                 <mat-select [(ngModel)]="userName" name="food">
@@ -23,6 +24,7 @@
               </mat-form-field>
             </div>
             <div class="col-lg-6">
+              <!-- 選擇事由 -->
               <ng-template [ngIf]="reasonRadio == '0'" [ngIfElse]="templatElse">
                 <mat-form-field appearance="fill" class="w-100">
                   <mat-label>選擇事由</mat-label>
@@ -62,8 +64,6 @@
               </div>
             </div>
             <div class="col-lg-9">
-
-
               <div class="row">
                 <div class="col-4">
                   <mat-form-field color="accent" appearance="fill" class="w-100">
@@ -95,7 +95,11 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+              <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>add</mat-icon>
+              </button> -->
+            </div>
           </div>
           <hr>
           <div class="row justify-content-end">
