@@ -3,6 +3,7 @@ import { Component, ElementRef, Inject } from '@angular/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
+import { EmailService } from './services/email.service';
 
 
 
@@ -23,7 +24,8 @@ export const MY_FORMATS = { parse: { dateInput: 'LL', }, display: { dateInput: '
 })
 export class AppComponent {
   constructor(
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private emailService:EmailService
   ) { }
   title = 'leave-project';
   userName: string = '';
@@ -56,6 +58,9 @@ export class AppComponent {
     { name: 'EnPeiLo【羅恩培】', value: 'EnPeiLo【羅恩培】' },
     { name: 'MisuSu【蘇亭郡】', value: 'MisuSu【蘇亭郡】' },
     { name: 'MichelleHsieh【謝婷蓁】', value: 'MichelleHsieh【謝婷蓁】' },
+    { name: 'BenChen【陳穎斌】', value: 'BenChen【陳穎斌】' },
+    { name: 'TinaDeng【鄧子涵】', value: 'TinaDeng【鄧子涵】' },
+    { name: 'IvanChung【鍾伊鎧】', value: 'IvanChung【鍾伊鎧】' },
     { name: 'MattWu【吳維珉】', value: 'MattWu【吳維珉】' },
     { name: 'VanessaHsu【許澐易】', value: 'VanessaHsu【許澐易】' },
     { name: 'JungKang【康家榮】', value: 'JungKang【康家榮】' },
@@ -64,6 +69,8 @@ export class AppComponent {
     { name: 'LewisLin【林紀霖】', value: 'LewisLin【林紀霖】' },
     { name: 'StephenChang【張世賢】', value: 'StephenChang【張世賢】' },
     { name: 'XavierKuo【郭嘉元】', value: 'XavierKuo【郭嘉元】' },
+    { name: 'SkyChen【陳建成】', value: 'SkyChen【陳建成】' },
+    { name: 'AndyKYChen【陳冠瑜】', value: 'AndyKYChen【陳冠瑜】' },
     { name: 'AllenLee【李東昇】', value: 'AllenLee【李東昇】' },
   ];
 
@@ -113,6 +120,14 @@ export class AppComponent {
 
   }
 
-
+  sendMail(): void{
+    let email = this.content;
+    let reqObj = {
+      email: email
+    }
+    this.emailService.sendMessage(reqObj).subscribe((v: any) =>{
+      console.log(v);
+    })
+  }
 }
 
