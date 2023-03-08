@@ -3,7 +3,7 @@ import { Component, ElementRef, Inject } from '@angular/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
-import { EmailService } from './services/email.service';
+
 
 
 
@@ -24,8 +24,7 @@ export const MY_FORMATS = { parse: { dateInput: 'LL', }, display: { dateInput: '
 })
 export class AppComponent {
   constructor(
-    private elementRef: ElementRef,
-    private emailService:EmailService
+    private elementRef: ElementRef
   ) { }
   title = 'leave-project';
   userName: string = '';
@@ -120,14 +119,14 @@ export class AppComponent {
 
   }
 
-  sendMail(): void{
-    let email = this.content;
-    let reqObj = {
-      email: email
-    }
-    this.emailService.sendMessage(reqObj).subscribe((v: any) =>{
-      console.log(v);
-    })
-  }
+  // sendMail(): void{
+  //   let email = this.content;
+  //   let reqObj = {
+  //     email: email
+  //   }
+  //   this.emailService.sendMessage(reqObj).subscribe((v: any) =>{
+  //     console.log(v);
+  //   })
+  // }
 }
 
